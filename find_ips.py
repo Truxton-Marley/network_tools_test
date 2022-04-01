@@ -23,7 +23,7 @@ for ip in ips:
     octets = address.split(".")
     subnet = int(octets[3]) - int(octets[3]) % cidr_dict[mask]
     broadcast = subnet + cidr_dict[mask] - 1
-    last_octets = "|".join([str(fin_oct) for fin_oct in range(subnet, broadcast)])
+    last_octets = "|".join([str(fin_oct) for fin_oct in range(subnet, broadcast+1)])
     last_octets = f".({last_octets})"
     search_command = "show configuration | display set | match \"" + (".").join(octets[:-1]) + last_octets
     search_commands.append(search_command)
